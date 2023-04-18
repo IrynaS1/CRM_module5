@@ -1,0 +1,20 @@
+.form-buttons__button {
+	border: 0;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-size: contain;
+	min-width: 20px;
+	min-height: 20px;
+}
+
+.form-buttons__button_basket {
+	background-image: url('../images/basket.svg');
+}
+
+.form-buttons__button_carbon {
+	background-image: url('../images/carbon_no-image.svg');
+}
+
+.form-buttons__button_edit {
+	background-image: url('../images/edit.svg');
+}
