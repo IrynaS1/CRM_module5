@@ -64,7 +64,7 @@ const checkboxDiscont =
 
 const discontText = document.querySelector('.form__input-line_discont');
 
-const totalCount = document.querySelector('.total__count-text_color');
+const totalCount = document.querySelector('.total__count-value');
 
 const buttonAddToCard = document.querySelector('.cms-order');
 
@@ -78,9 +78,9 @@ closeBtn.addEventListener('click', () => {
 	overlay.classList.remove('overlay__flex');
 });
 
-overlay.addEventListener('click', () => {
+/* overlay.addEventListener('click', () => {
 	overlay.classList.remove('overlay__flex');
-});
+}); */
 
 const table = document.querySelector('.data-table');
 
@@ -102,4 +102,75 @@ table.addEventListener('click', e => {
 	}
 	console.log('База данных после удаления', goods);
 });
+
+checkboxDiscont.addEventListener('click', () => {
+	if (discontText.hasAttribute('disabled') === true) {
+		discontText.removeAttribute('disabled');
+	} else {
+		discontText.value = '';
+		discontText.setAttribute('disabled', 'disabled');
+	}
+});
+
+const addGood = document.querySelector('.card-order');
+
+addGood.addEventListener('submit', (e) => {
+	e.preventDefault();
+
+	const formData = new FormData(e.target);
+
+	const newGood = Object.fromEntries(formData);
+
+	const newGoodCount = document.querySelector('.card-order');
+
+	const totalCountMultiplication = newGood.count * newGood.price;
+
+	//console.log('totalCountMultiplication', totalCountMultiplication);
+
+	totalCount.innerHTML = totalCountMultiplication;
+
+	goods.push(newGood);
+
+	createRow(newGood);
+});
+
+const createRow = (newGood) => {
+	const tr = document.createElement('tr');
+	tr.classList.add('data-table__items');
+
+	const totalCountMultiplicationValue = document.querySelector('.total__count-value').textContent;
+
+	tr.innerHTML = `<td class="data-table__item"></td>
+	<td class="data-table__item">${newGood.title}</td>
+	<td class="data-table__item">${newGood.category}</td>
+	<td class="data-table__item data-table__item_color">${newGood.units}</td>
+	<td class="data-table__item data-table__item_align">${newGood.count}</td>
+	<td class="data-table__item data-table__item_align">$${newGood.price}</td>
+	<td class="data-table__item data-table__item_align">$
+		<span class="data-table__item-sum">${totalCountMultiplicationValue}</span></td>
+	<td class="form-buttons data-table__item data-table__item_icons">
+		<button class="form-buttons__button form-buttons__button_carbon"></button>
+		<button class="form-buttons__button form-buttons__button_edit"></button>
+		<button class="form-buttons__button form-buttons__button_basket"></button>
+	</td>`;
+
+	const headTr = document.querySelector('.data-table__head-items');
+
+	headTr.after(tr);
+
+	const sumEl = document.querySelectorAll('.data-table__item-sum');
+
+	let sumGoodsArray = [];
+
+	for (let i = 0; i < sumEl.length; i++) {
+		sumGoodsArray.push(Number(sumEl[i].textContent));
+	}
+
+	const totalSumGoods = sumGoodsArray.reduce(function (sum, el) {
+		return sum + el;
+	});
+
+	const totalCountLine = document.querySelector('.total__count-text__sum');
+	totalCountLine.textContent = totalSumGoods;
+}
 

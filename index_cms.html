@@ -25,7 +25,8 @@
 
 				<div class="total__count">
 					<p class="total__count-text">Итоговая стоимость:
-						<span class="total__count-text total__count-text_color"><strong>$ 900.00</strong></span>
+						<span class="total__count-text total__count-text_color"><strong>$ <span
+									class="total__count-text total__count-text__sum">900.00</span></strong></span>
 					</p>
 				</div>
 			</div>
@@ -74,9 +75,9 @@
 
 											<div class="form__element form__element_product">
 												<p class="form__input-margin">
-													<label for="product" class="form__input-title">Наименование</label>
+													<label for="title" class="form__input-title">Наименование</label>
 												</p>
-												<input type="text" name="product" id="product" class="form__input-line" required>
+												<input type="text" name="title" id="title" class="form__input-line" required>
 											</div>
 
 											<div class="form__element form__element_category">
@@ -88,10 +89,9 @@
 
 											<div class="form__element form__element_measurement">
 												<p class="form__input-margin">
-													<label for="measurement" class="form__input-title">Единицы измерения</label>
+													<label for="units" class="form__input-title">Единицы измерения</label>
 												</p>
-												<input type="text" name="measurement" id="measurement" class="form__input-line"
-													required>
+												<input type="text" name="units" id="units" class="form__input-line" required>
 											</div>
 
 											<div class="form__element form__element_discont">
@@ -102,7 +102,7 @@
 													<input type="checkbox" name="is-discont" id="discont"
 														class="form__input-line form__input-line_discont-checkbox">
 													<input type="text" name="code-discont" id="discont"
-														class="form__input-line form__input-line_discont">
+														class="form__input-line form__input-line_discont" disabled required>
 												</div>
 											</div>
 
@@ -111,14 +111,14 @@
 													<label for="description" class="form__input-title">Описание</label>
 												</p>
 												<textarea name="description" id="description" cols="30" rows="6"
-													class="form__input-line form__input-line_description"></textarea>
+													class="form__input-line form__input-line_description" required></textarea>
 											</div>
 
 											<div class="form__element form__element_count">
 												<p class="form__input-margin">
 													<label for="count" class="form__input-title">Количество</label>
 												</p>
-												<input type="text" name="count" id="count" class="form__input-line" required>
+												<input type="number" name="count" id="count" class="form__input-line" required>
 											</div>
 
 											<div class="form__element form__element_price">
@@ -137,13 +137,14 @@
 									<div class="total">
 										<div class="total__count">
 											<p class="total__count-text">Итоговая стоимость:
-												<span class="total__count-text total__count-text_color"><strong>$
-														900.00</strong></span>
+												<span class="total__count-text total__count-text_color">
+													<strong>$<span class="total__count-value">900.00</span>
+													</strong></span>
 											</p>
 										</div>
 
 										<div class="total__add-to-card">
-											<button class="total__button">Добавить товар</button>
+											<button type="submit" form="form-order" class="total__button">Добавить товар</button>
 										</div>
 									</div>
 
@@ -172,7 +173,8 @@
 								<td class="data-table__item data-table__item_color">шт</td>
 								<td class="data-table__item data-table__item_align">5</td>
 								<td class="data-table__item data-table__item_align">$100</td>
-								<td class="data-table__item data-table__item_align">$500</td>
+								<td class="data-table__item data-table__item_align">$<span
+										class="data-table__item-sum">500</span></td>
 								<td class="form-buttons data-table__item data-table__item_icons">
 									<button class="form-buttons__button form-buttons__button_carbon"></button>
 									<button class="form-buttons__button form-buttons__button_edit"></button>
@@ -186,7 +188,8 @@
 								<td class="data-table__item data-table__item_color">шт</td>
 								<td class="data-table__item data-table__item_align">12</td>
 								<td class="data-table__item data-table__item_align">$14</td>
-								<td class="data-table__item data-table__item_align">$168</td>
+								<td class="data-table__item data-table__item_align">$<span
+										class="data-table__item-sum">168</span></td>
 								<td class="form-buttons data-table__item data-table__item_icons">
 									<button class="form-buttons__button form-buttons__button_carbon"></button>
 									<button class="form-buttons__button form-buttons__button_edit"></button>
@@ -200,7 +203,8 @@
 								<td class="data-table__item data-table__item_color">шт</td>
 								<td class="data-table__item data-table__item_align">2</td>
 								<td class="data-table__item data-table__item_align">$500</td>
-								<td class="data-table__item data-table__item_align">$1000</td>
+								<td class="data-table__item data-table__item_align">$<span
+										class="data-table__item-sum">1000</span></td>
 								<td class="form-buttons data-table__item data-table__item_icons">
 									<button class="form-buttons__button form-buttons__button_carbon"></button>
 									<button class="form-buttons__button form-buttons__button_edit"></button>
@@ -214,7 +218,8 @@
 								<td class="data-table__item data-table__item_color">шт</td>
 								<td class="data-table__item data-table__item_align">2</td>
 								<td class="data-table__item data-table__item_align">$22</td>
-								<td class="data-table__item data-table__item_align">$44</td>
+								<td class="data-table__item data-table__item_align">$<span
+										class="data-table__item-sum">44</span></td>
 								<td class="form-buttons data-table__item data-table__item_icons">
 									<button class="form-buttons__button form-buttons__button_carbon"></button>
 									<button class="form-buttons__button form-buttons__button_edit"></button>
@@ -228,7 +233,8 @@
 								<td class="data-table__item data-table__item_color">шт</td>
 								<td class="data-table__item data-table__item_align">5</td>
 								<td class="data-table__item data-table__item_align">$700</td>
-								<td class="data-table__item data-table__item_align">$3500</td>
+								<td class="data-table__item data-table__item_align">$<span
+										class="data-table__item-sum">3500</span></td>
 								<td class="form-buttons data-table__item data-table__item_icons">
 									<button class="form-buttons__button form-buttons__button_carbon"></button>
 									<button class="form-buttons__button form-buttons__button_edit"></button>
@@ -242,7 +248,8 @@
 								<td class="data-table__item data-table__item_color">шт</td>
 								<td class="data-table__item data-table__item_align">10</td>
 								<td class="data-table__item data-table__item_align">$20</td>
-								<td class="data-table__item data-table__item_align">$200</td>
+								<td class="data-table__item data-table__item_align">$<span
+										class="data-table__item-sum">200</span></td>
 								<td class="form-buttons data-table__item data-table__item_icons">
 									<button class="form-buttons__button form-buttons__button_carbon"></button>
 									<button class="form-buttons__button form-buttons__button_edit"></button>
