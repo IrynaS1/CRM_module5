@@ -1,4 +1,4 @@
-'use strict';
+import * as elements from './modules/getElements.js';
 
 const goods = [
 	{
@@ -51,96 +51,67 @@ const goods = [
 	},
 ];
 
-const overlay = document.querySelector('.overlay');
-
-const mainTitle = document.querySelector('.title__text');
-
-const idOfGood = document.querySelector('.title__id-good');
-
-const formOrder = document.querySelector('.card-box');
-
-const checkboxDiscont =
-	document.querySelector('.form__input-line_discont-checkbox');
-
-const discontText = document.querySelector('.form__input-line_discont');
-
-const totalCount = document.querySelector('.total__count-value');
-
-const buttonAddToCard = document.querySelector('.cms-order');
-
-buttonAddToCard.addEventListener('click', () => {
-	overlay.classList.add('overlay__flex');
-});
-
-const closeBtn = document.querySelector('.close__btn');
-
-closeBtn.addEventListener('click', () => {
-	overlay.classList.remove('overlay__flex');
-});
-
-/* overlay.addEventListener('click', () => {
-	overlay.classList.remove('overlay__flex');
-}); */
-
-const table = document.querySelector('.data-table');
-
-table.addEventListener('click', e => {
-	const target = e.target;
-
-	if (target.classList.contains('form-buttons__button_basket')) {
-		let tr = target.closest('.data-table__items');
-
-		let id = tr.firstChild.nextSibling.innerText;
-
-		let ind = goods.findIndex((good) => {
-			return good.id == id;
+{
+	const init = () => {
+		elements.buttonAddToCard.addEventListener('click', () => {
+			elements.overlay.classList.add('overlay__flex');
 		});
 
-		goods.splice(ind, 1);
+		elements.closeBtn.addEventListener('click', () => {
+			elements.overlay.classList.remove('overlay__flex');
+		});
 
-		tr.remove();
-	}
-	console.log('База данных после удаления', goods);
-});
+		elements.table.addEventListener('click', e => {
+			const target = e.target;
 
-checkboxDiscont.addEventListener('click', () => {
-	if (discontText.hasAttribute('disabled') === true) {
-		discontText.removeAttribute('disabled');
-	} else {
-		discontText.value = '';
-		discontText.setAttribute('disabled', 'disabled');
-	}
-});
+			if (target.classList.contains('form-buttons__button_basket')) {
+				let tr = target.closest('.data-table__items');
 
-const addGood = document.querySelector('.card-order');
+				let id = tr.firstChild.nextSibling.innerText;
 
-addGood.addEventListener('submit', (e) => {
-	e.preventDefault();
+				let ind = goods.findIndex((good) => {
+					return good.id == id;
+				});
 
-	const formData = new FormData(e.target);
+				goods.splice(ind, 1);
 
-	const newGood = Object.fromEntries(formData);
+				tr.remove();
+			}
+			console.log('База данных после удаления', goods);
+		});
 
-	const newGoodCount = document.querySelector('.card-order');
+		elements.checkboxDiscont.addEventListener('click', () => {
+			if (elements.discontText.hasAttribute('disabled') === true) {
+				elements.discontText.removeAttribute('disabled');
+			} else {
+				elements.discontText.value = '';
+				elements.discontText.setAttribute('disabled', 'disabled');
+			}
+		});
 
-	const totalCountMultiplication = newGood.count * newGood.price;
+		elements.addGood.addEventListener('submit', (e) => {
+			e.preventDefault();
 
-	//console.log('totalCountMultiplication', totalCountMultiplication);
+			const formData = new FormData(e.target);
 
-	totalCount.innerHTML = totalCountMultiplication;
+			const newGood = Object.fromEntries(formData);
 
-	goods.push(newGood);
+			const totalCountMultiplication = newGood.count * newGood.price;
 
-	createRow(newGood);
-});
+			elements.totalCount.innerHTML = totalCountMultiplication;
 
-const createRow = (newGood) => {
-	const tr = document.createElement('tr');
-	tr.classList.add('data-table__items');
+			goods.push(newGood);
 
-	const totalCountMultiplicationValue = document.querySelector('.total__count-value').textContent;
+			createRow(newGood);
+		});
 
-	tr.innerHTML = `<td class="data-table__item"></td>
+		const createRow = (newGood) => {
+			const tr = document.createElement('tr');
+			tr.classList.add('data-table__items');
+
+			const totalCountMultiplicationValue = elements.totalCountMulti.textContent;
+
+			tr.innerHTML = `<td class="data-table__item"></td>
 	<td class="data-table__item">${newGood.title}</td>
 	<td class="data-table__item">${newGood.category}</td>
 	<td class="data-table__item data-table__item_color">${newGood.units}</td>
@@ -154,23 +125,21 @@ const createRow = (newGood) => {
 		<button class="form-buttons__button form-buttons__button_basket"></button>
 	</td>`;
 
-	const headTr = document.querySelector('.data-table__head-items');
+			elements.headTr.after(tr);
 
-	headTr.after(tr);
+			let sumGoodsArray = [];
 
-	const sumEl = document.querySelectorAll('.data-table__item-sum');
+			for (let i = 0; i < elements.sumEl.length; i++) {
+				sumGoodsArray.push(Number(elements.sumEl[i].textContent));
+			}
 
-	let sumGoodsArray = [];
+			const totalSumGoods = sumGoodsArray.reduce(function (sum, el) {
+				return sum + el;
+			});
 
-	for (let i = 0; i < sumEl.length; i++) {
-		sumGoodsArray.push(Number(sumEl[i].textContent));
-	}
+			elements.totalCountLine.textContent = totalSumGoods;
+		};
+	};
 
-	const totalSumGoods = sumGoodsArray.reduce(function (sum, el) {
-		return sum + el;
-	});
-
-	const totalCountLine = document.querySelector('.total__count-text__sum');
-	totalCountLine.textContent = totalSumGoods;
+	init();
 }
-
