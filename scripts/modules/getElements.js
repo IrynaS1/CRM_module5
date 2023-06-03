@@ -31,6 +31,8 @@ const headTr = document.querySelector('.data-table__head-items');
 
 const totalCountMulti = document.querySelector('.total__count-value');
 
+const openImage = document.querySelector('.form-buttons__button_carbon');
+
 export {
 	overlay,
 	mainTitle,
@@ -48,4 +50,5 @@ export {
 	totalCountLine,
 	headTr,
 	totalCountMulti,
+	openImage,
 };
