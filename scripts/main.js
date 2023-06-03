@@ -107,7 +107,7 @@ const goods = [
 
 		elements.table.addEventListener('click', (e) => {
 			if (e.target.classList.contains('form-buttons__button_carbon')) {
-				const url_image = '../images/wild_cat.jpg';
+				const url_image = '../images/phone.jpg';
 
 				const imageHeight = screen.height / 7;
 
@@ -132,7 +132,7 @@ const goods = [
 	<td class="data-table__item data-table__item_align">
 		<span class="data-table__item-sum">${totalCountMultiplicationValue}</span></td>
 	<td class="form-buttons data-table__item data-table__item_icons">
-		<button class="form-buttons__button form-buttons__button_carbon" data-pic="../images/wild_cat.jpg"></button>
+		<button class="form-buttons__button form-buttons__button_carbon" data-pic="../images/phone.jpg"></button>
 		<button class="form-buttons__button form-buttons__button_edit"></button>
 		<button class="form-buttons__button form-buttons__button_basket"></button>
 	</td>`;
