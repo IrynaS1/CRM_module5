@@ -27,7 +27,7 @@ const sumEl = document.querySelectorAll('.data-table__item-sum');
 
 const totalCountLine = document.querySelector('.total__count-text__sum');
 
-const headTr = document.querySelector('.data-table__head-items');
+const headTable = document.querySelector('.data-table__head-items');
 
 const totalCountMulti = document.querySelector('.total__count-value');
 
@@ -48,7 +48,7 @@ export {
 	newGoodCount,
 	sumEl,
 	totalCountLine,
-	headTr,
+	headTable,
 	totalCountMulti,
 	openImage,
 };
