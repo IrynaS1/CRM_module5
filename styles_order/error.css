@@ -1,0 +1,45 @@
+.overlay-error {
+	position: fixed;
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 100;
+	cursor: pointer;
+	padding: 50px 20%;
+}
+
+.error {
+	width: 60%;
+	height: max-content;
+	padding: 26px 30px 96px 30px;
+	background: #F2F0F9;
+	margin: 0 auto;
+}
+
+.close {
+	margin-bottom: 63px;
+}
+
+.error__img {
+	background-image: url('../images/error.svg');
+	background-repeat: no-repeat;
+	background-position: center;
+	min-width: 90px;
+	min-height: 90px;
+	margin-bottom: 33px;
+}
+
+.error__message-text {
+	color: #6E6893;
+	font-size: 18px;
+	font-family: Inter;
+	font-weight: 700;
+	letter-spacing: 1.8px;
+	text-transform: uppercase;
+	text-align: center;
+}
