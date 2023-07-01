@@ -1,9 +1,13 @@
-import { modalErrorAddGood } from './modal_addGood.js';
+import {
+	modalErrorAddGood
+} from './modal_addGood.js';
 
-import { goods, renderGoods } from './renderAllGoods.js';
+import {
+	goods,
+	renderGoods
+} from './renderAllGoods.js';
 
 const changeGood = (goodId, form) => {
-	console.log('goods in changeGood', goods);
 	const data = new FormData(form);
 
 	const newData = Object.fromEntries(data);
@@ -15,7 +19,7 @@ const changeGood = (goodId, form) => {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-		})
+		});
 	};
 
 	patchGood(newData);
@@ -32,8 +36,6 @@ const changeGood = (goodId, form) => {
 	if (index !== -1) {
 		goods[index] = newData;
 	}
-
-	console.log('gooooooooooooooods!!!!!!!!!!!!', goods);
 
 	renderGoods();
 
@@ -76,12 +78,6 @@ const changeGood = (goodId, form) => {
 			}
 		}
 	)
-	.then((data) => {
-		console.log(data);
-		// {title: "foo", body: "bar", userId: 1, id: 101}
-
-	})
-	.then(res => console.log(res));
 */
 
 };
