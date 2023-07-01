@@ -6,7 +6,7 @@
 		"product description"
 		"category description"
 		"measurement count"
-		"discont price"
+		"discount price"
 		". add-picture";
 	column-gap: 24px;
 	row-gap: 12px;
@@ -24,8 +24,8 @@
 	grid-area: measurement;
 }
 
-.form__element_discont {
-	grid-area: discont;
+.form__element_discount {
+	grid-area: discount;
 }
 
 .form__element_description {
@@ -76,7 +76,11 @@
 	border: none;
 }
 
-.form__input-line_discont-checkbox {
+.form__input-line_discount {
+	width: 85%;
+}
+
+.form__input-line_discount-checkbox {
 	max-width: 40px;
 	min-height: 40px;
 	-webkit-appearance: none;
@@ -84,7 +88,7 @@
 	appearance: none;
 }
 
-.form__input-line_discont-checkbox {
+.form__input-line_discount-checkbox {
 	position: relative;
 	appearance: none;
 	display: inline-block;
@@ -92,7 +96,7 @@
 	margin-right: 1px;
 }
 
-.form__input-line_discont-checkbox::before {
+.form__input-line_discount-checkbox::before {
 	content: "";
 	position: absolute;
 	width: 100%;
@@ -101,7 +105,7 @@
 	border-radius: 6px;
 }
 
-.form__input-line_discont-checkbox::after {
+.form__input-line_discount-checkbox::after {
 	content: "";
 	position: absolute;
 	width: 6px;
@@ -114,7 +118,7 @@
 	visibility: hidden;
 }
 
-.form__input-line_discont-checkbox:checked::after {
+.form__input-line_discount-checkbox:checked::after {
 	visibility: visible;
 	padding: 12px 12px;
 	margin-left: 8px;
@@ -170,7 +174,7 @@
 		column-gap: 20px;
 	}
 
-	.form__input-line_discont-checkbox {
+	.form__input-line_discount-checkbox {
 		max-width: none;
 		min-width: 40px;
 	}

@@ -1,72 +1,121 @@
 import * as elements from './modules/getElements.js';
 
-const load = async () => {
-	const dataGet = await fetch('https://viridian-beryl-gooseberry.glitch.me/api/goods/');
+import renderGoods from './modules/renderAllGoods.js';
 
-	const data = await dataGet.json();
+import {
+	createModalAddGood,
+	modalErrorAddGood,
+} from './modules/modal_addGood.js';
 
-	return data;
-};
-
-const goods = await load();
-
-const renderGoods = (goods, headTable) => {
-
-	goods.forEach((good) => {
-		const total = good.count * good.price;
-
-		const row = document.createElement('tr');
-		row.classList.add('data-table__items');
-		row.innerHTML = `<td class="data-table__item" id="id">${good.id}</td>
-		<td class="data-table__item">${good.title}</td>
-		<td class="data-table__item">${good.category}</td>
-		<td class="data-table__item data-table__item_color">${good.units}</td>
-		<td class="data-table__item data-table__item_align">${good.count}</td>
-		<td class="data-table__item data-table__item_align">$${good.price}</td>
-		<td class="data-table__item data-table__item_align">$<span
-				class="data-table__item-sum">${total}</span></td>
-		<td class="form-buttons data-table__item data-table__item_icons">
-			<button class="form-buttons__button form-buttons__button_carbon"></button>
-			<button class="form-buttons__button form-buttons__button_edit"></button>
-			<button class="form-buttons__button form-buttons__button_basket"></button>
-		</td>
-		`;
-
-		headTable.after(row);
-	});
-
-	const totalAll = document.querySelectorAll('.data-table__item-sum');
-
-	let totalArray = [];
-
-	for (let i = 0; i < totalAll.length; i++) {
-		const num = Number(totalAll[i].textContent);
-
-		totalArray.push(num);
-	}
-
-	const totalSumElement = document.querySelector('.total__count-text__sum');
-
-	const totalSum = totalArray.reduce((function (acc, val) {
-		return acc + val;
-	}));
-
-	totalSumElement.textContent = totalSum;
-};
-
-renderGoods(goods, elements.headTable);
+import editGood from './modules/modalEdit.js';
 
 {
+	renderGoods();
+
 	const init = () => {
 		elements.buttonAddToCard.addEventListener('click', () => {
-			elements.overlay.classList.add('overlay__flex');
+			createModalAddGood();
+
+			const modal = document.querySelector('.overlay');
+			modal.classList.add('overlay__flex');
+
+			const modalCloseDtn = document.querySelector('.close__btn');
+
+			modalCloseDtn.addEventListener('click', () => {
+				const modal = document.querySelector('.overlay');
+				modal.classList.remove('overlay__flex');
+			});
+
+			const checkboxDiscont = document.querySelector('.form__input-line_discount-checkbox');
+
+			const discontText = document.querySelector('.form__input-line_discount');
+
+			checkboxDiscont.addEventListener('click', () => {
+				if (discontText.hasAttribute('disabled') === true) {
+					discontText.removeAttribute('disabled');
+				} else {
+					discontText.value = '';
+					discontText.setAttribute('disabled', 'disabled');
+				}
+			});
+
+			const addGood = document.querySelector('.card-order');
+
+			addGood.addEventListener('submit', (e) => {
+				e.preventDefault();
+
+				const formData = new FormData(e.target);
+
+				const newGood = Object.fromEntries(formData);
+
+				const newGoodPost = async (newGood) => {
+					const dataPost = await fetch('https://viridian-beryl-gooseberry.glitch.me/api/goods/', {
+						method: 'POST',
+						body: JSON.stringify(newGood),
+						headers: {
+							'Content-Type': 'application/json',
+						}
+					})
+
+						.then(
+							function (response) {
+								if ((response.status === 200) || (response.status === 201)) {
+
+									console.log('Cохранение прошло успешно ' +
+										response.status);
+
+									const modal = document.querySelector('.overlay');
+									modal.classList.remove('overlay__flex');
+
+									window.location.reload();
+
+									return;
+								}
+
+								if ((response.status !== 200) || (response.status !== 201)) {
+									console.log('При сохранении произошла ошибка' +
+										response.status);
+
+									//окно error
+									modalErrorAddGood();
+
+									const overlayError = document.querySelector('.overlay-error');
+									overlayError.style.display = 'block';
+
+									const closeOverlayError = document.querySelector('.close__btn_error');
+									closeOverlayError.addEventListener('click', (e) => {
+										e.preventDefault();
+
+										overlayError.style.display = 'none';
+
+										const overlayGood = document.querySelector('.overlay');
+										overlayGood.classList.add('overlay__flex');
+									});
+
+									return;
+								}
+							}
+						)
+				};
+
+				//добавление товара на сервер  - post
+				newGoodPost(newGood);
+
+				const totalCountMultiplication = newGood.count * newGood.price;
+
+				const totalCount = document.querySelector('.total__count-value');
+				totalCount.innerHTML = totalCountMultiplication;
+
+				goods.push(newGood);
+
+				createRow(newGood);
+			});
 		});
 
-		elements.closeBtn.addEventListener('click', () => {
-			elements.overlay.classList.remove('overlay__flex');
-		});
 
 		elements.table.addEventListener('click', e => {
+			e.preventDefault();
+
 			const target = e.target;
 
 			if (target.classList.contains('form-buttons__button_basket')) {
@@ -84,81 +133,9 @@ renderGoods(goods, elements.headTable);
 			}
 		});
 
-		elements.checkboxDiscont.addEventListener('click', () => {
-			if (elements.discontText.hasAttribute('disabled') === true) {
-				elements.discontText.removeAttribute('disabled');
-			} else {
-				elements.discontText.value = '';
-				elements.discontText.setAttribute('disabled', 'disabled');
-			}
-		});
-
-		elements.addGood.addEventListener('submit', (e) => {
+		elements.table.addEventListener('click', (e) => {
 			e.preventDefault();
 
-			const formData = new FormData(e.target);
-
-			const newGood = Object.fromEntries(formData);
-
-			const newGoodPost = async (newGood) => {
-				const dataPost = await fetch('https://viridian-beryl-gooseberry.glitch.me/api/goods/', {
-					method: 'POST',
-					body: JSON.stringify(newGood),
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				})
-
-					.then(
-						function (response) {
-							if ((response.status === 200) || (response.status === 201)) {
-
-								console.log('Cохранение прошло успешно ' +
-									response.status);
-
-								elements.overlay.classList.remove('overlay__flex');
-
-								window.location.reload();
-
-								return;
-							}
-
-							if ((response.status !== 200) || (response.status !== 201)) {
-								console.log('При сохранении произошла ошибка' +
-									response.status);
-
-								//окно error
-
-								const overlayError = document.querySelector('.overlay-error');
-								overlayError.style.display = 'block';
-
-								const closeOverlayError = document.querySelector('.close__btn_error');
-								closeOverlayError.addEventListener('click', (e) => {
-									overlayError.style.display = 'none';
-
-									const overlayGood = document.querySelector('.overlay');
-									overlayGood.classList.add('overlay__flex');
-								});
-
-								return;
-							}
-						}
-					)
-			};
-
-			//добавление товара на сервер  - post
-			newGoodPost(newGood);
-
-			const totalCountMultiplication = newGood.count * newGood.price;
-
-			elements.totalCount.innerHTML = totalCountMultiplication;
-
-			goods.push(newGood);
-
-			createRow(newGood);
-		});
-
-		elements.table.addEventListener('click', (e) => {
 			if (e.target.classList.contains('form-buttons__button_carbon')) {
 				const url_image = '../images/phone.jpg';
 
@@ -174,7 +151,9 @@ renderGoods(goods, elements.headTable);
 			const tr = document.createElement('tr');
 			tr.classList.add('data-table__items');
 
-			const totalCountMultiplicationValue = elements.totalCountMulti.textContent;
+			const totalCountMulti = document.querySelector('.total__count-value');
+
+			const totalCountMultiplicationValue = totalCountMulti.textContent;
 
 			tr.innerHTML = `<td class="data-table__item"></td>
 	<td class="data-table__item">${newGood.title}</td>
@@ -208,13 +187,22 @@ renderGoods(goods, elements.headTable);
 
 			elements.totalCountLine.textContent = totalSumGoods;
 		};
+
+		elements.table.addEventListener('click', e => {
+			e.preventDefault();
+
+			if (e.target.classList.contains('form-buttons__button_edit')) {
+				editGood(e);
+			}
+		});
+
 	};
 
 	init();
 }
 
 //удаление товара по id
-/* fetch('https://viridian-beryl-gooseberry.glitch.me/api/goods/4793861054', {
-	method: 'DELETE'
+/* fetch('https://viridian-beryl-gooseberry.glitch.me/api/goods/5151689445', {
+	method: 'DELETE',
 }); */
 
