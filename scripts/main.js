@@ -1,6 +1,6 @@
 import * as elements from './modules/getElements.js';
 
-import renderGoods from './modules/renderAllGoods.js';
+import { renderGoods } from './modules/renderAllGoods.js';
 
 import {
 	createModalAddGood,

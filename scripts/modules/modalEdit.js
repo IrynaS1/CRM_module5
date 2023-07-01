@@ -1,6 +1,6 @@
 import * as elements from './getElements.js';
 
-import renderGoods from './renderAllGoods.js';
+import { renderGoods } from './renderAllGoods.js';
 
 import loadstyle from './loadStyle.js';
 
@@ -180,7 +180,7 @@ const editGood = async (e) => {
 
 		changeGood(goodId, form);
 
-		renderGoods();
+		//renderGoods();
 	});
 };
 

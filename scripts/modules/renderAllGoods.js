@@ -53,4 +53,7 @@ const renderGoods = () => {
 	totalSumElement.textContent = totalSum;
 };
 
-export default renderGoods;
+export {
+	renderGoods,
+	goods,
+};
