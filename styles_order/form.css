@@ -47,7 +47,7 @@
 	margin-bottom: 20px;
 }
 
-.discont__items {
+.discount__items {
 	display: grid;
 	grid-template-columns: 1fr 4fr;
 	grid-template-rows: 40px;
@@ -75,10 +75,10 @@
 	border-radius: 6px;
 	border: none;
 }
-
+/* 
 .form__input-line_discount {
 	width: 85%;
-}
+} */
 
 .form__input-line_discount-checkbox {
 	max-width: 40px;

@@ -150,10 +150,6 @@ const renderGoodEdit = (good) => {
 	totalLine.textContent = `${total}`;
 
 	if (good.discount > 0) {
-		const discountBlock = document.querySelector('.discount__items');
-		discountBlock.style.display = 'flex';
-		discountBlock.style.justifyContent = 'space-between';
-
 		const checkbox = document.querySelector('.form__input-line_discount-checkbox');
 		checkbox.checked = true;
 
