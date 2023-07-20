@@ -1,4 +1,4 @@
-const overlay = document.querySelector('.overlay');
+const wrapper = document.querySelector('.cms-wrapper');
 
 const mainTitle = document.querySelector('.title__text');
 
@@ -6,20 +6,9 @@ const idOfGood = document.querySelector('.title__id-good');
 
 const formOrder = document.querySelector('.card-box');
 
-const checkboxDiscont =
-	document.querySelector('.form__input-line_discont-checkbox');
-
-const discontText = document.querySelector('.form__input-line_discont');
-
-const totalCount = document.querySelector('.total__count-value');
-
-const buttonAddToCard = document.querySelector('.cms-order');
-
-const closeBtn = document.querySelector('.close__btn');
+const buttonAddToCard = document.querySelector('.total__button');
 
 const table = document.querySelector('.data-table');
-
-const addGood = document.querySelector('.card-order');
 
 const newGoodCount = document.querySelector('.card-order');
 
@@ -34,17 +23,12 @@ const totalCountMulti = document.querySelector('.total__count-value');
 const openImage = document.querySelector('.form-buttons__button_carbon');
 
 export {
-	overlay,
+	wrapper,
 	mainTitle,
 	idOfGood,
 	formOrder,
-	checkboxDiscont,
-	discontText,
-	totalCount,
 	buttonAddToCard,
-	closeBtn,
 	table,
-	addGood,
 	newGoodCount,
 	sumEl,
 	totalCountLine,

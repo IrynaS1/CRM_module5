@@ -5,7 +5,7 @@
 	grid-template-areas:
 		"product description"
 		"category description"
-		"measurement count"
+		"units count"
 		"discont price"
 		". add-picture";
 	column-gap: 24px;
@@ -20,8 +20,8 @@
 	grid-area: category;
 }
 
-.form__element_measurement {
-	grid-area: measurement;
+.form__element_units {
+	grid-area: units;
 }
 
 .form__element_discont {
@@ -129,13 +129,25 @@
 	border-radius: 6px;
 	border: none;
 	padding: 11px 29px 11px 28px;
+}
+
+.add-picture__btn-text {
 	font-style: normal;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 17px;
 	text-transform: uppercase;
 	color: #FFFFFF;
+}
 
+.title__order-id-good {
+	color: #C5C5C5;
+	font-family: Inter;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+	text-transform: uppercase;
 }
 
 @media (max-width:820px) {
