@@ -26,7 +26,7 @@
 				<div class="total__count">
 					<p class="total__count-text">Итоговая стоимость:
 						<span class="total__count-text total__count-text_color"><strong>$ <span
-									class="total__count-text total__count-text__sum">900.00</span></strong></span>
+									class="total__count-text total__count-text__sum">0</span></strong></span>
 					</p>
 				</div>
 			</div>
@@ -51,119 +51,11 @@
 						</div>
 						<div class="cms-order">
 							<button class="total__button">
-								Добавить товар</button>
+								<span class="total__button-text">Добавить товар</span></button>
 						</div>
 
-						<!-- окно добавления товара - начало -->
-						<div class="overlay">
-							<!-- окно ошибки добавления товара - начало -->
-							<div class="overlay-error">
-								<div class="error">
-									<div class="close">
-										<button class="close__btn close__btn_error">&#10006;</button>
-									</div>
-									<div class="error__img"></div>
-									<div class="error__message">
-										<p class="error__message-text">Что-то пошло не так</p>
-									</div>
-								</div>
-							</div>
-							<!-- окно ошибки добавления товара - конец -->
-							<div class="card card-order">
+						<!-- окно добавления товара -->
 
-								<div class="close">
-									<button class="close__btn">&#10006;</button>
-								</div>
-
-								<div class="title title__order">
-									<h1 class="title__text title__text_order">Добавить ТОВАР</h1>
-
-									<div class="title__underline"></div>
-								</div>
-
-								<div class="card-container">
-									<div class="card-box">
-										<form id="form-order" class="form" method="post" action="#">
-
-											<div class="form__element form__element_product">
-												<p class="form__input-margin">
-													<label for="title" class="form__input-title">Наименование</label>
-												</p>
-												<input type="text" name="title" id="title" class="form__input-line" required>
-											</div>
-
-											<div class="form__element form__element_category">
-												<p class="form__input-margin">
-													<label for="category" class="form__input-title">Категория</label>
-												</p>
-												<input type="text" name="category" id="category" class="form__input-line" required>
-											</div>
-
-											<div class="form__element form__element_measurement">
-												<p class="form__input-margin">
-													<label for="units" class="form__input-title">Единицы измерения</label>
-												</p>
-												<input type="text" name="units" id="units" class="form__input-line" required>
-											</div>
-
-											<div class="form__element form__element_discont">
-												<p class="form__input-margin">
-													<label for="discont" class="form__input-title">Дисконт</label>
-												</p>
-												<div class="discont__items">
-													<input type="checkbox" name="is-discont" id="discont"
-														class="form__input-line form__input-line_discont-checkbox">
-													<input type="text" name="code-discont" id="discont"
-														class="form__input-line form__input-line_discont" disabled required>
-												</div>
-											</div>
-
-											<div class="form__element form__element_description">
-												<p class="form__input-margin">
-													<label for="description" class="form__input-title">Описание</label>
-												</p>
-												<textarea name="description" id="description" cols="30" rows="6"
-													class="form__input-line form__input-line_description" required></textarea>
-											</div>
-
-											<div class="form__element form__element_count">
-												<p class="form__input-margin">
-													<label for="count" class="form__input-title">Количество</label>
-												</p>
-												<input type="number" name="count" id="count" class="form__input-line" required>
-											</div>
-
-											<div class="form__element form__element_price">
-												<p class="form__input-margin">
-													<label for="price" class="form__input-title">Цена</label>
-												</p>
-												<input type="number" name="price" id="price" class="form__input-line" required>
-											</div>
-
-											<div class="form__element add-picture">
-												<button class="add-picture__btn">Добавить изображение</button>
-											</div>
-										</form>
-									</div>
-
-									<div class="total">
-										<div class="total__count">
-											<p class="total__count-text">Итоговая стоимость:
-												<span class="total__count-text total__count-text_color">
-													<strong>$<span class="total__count-value">900.00</span>
-													</strong></span>
-											</p>
-										</div>
-
-										<div class="total__add-to-card">
-											<button type="submit" form="form-order" class="total__button">Добавить товар</button>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<!-- окно добавления товара - конец-->
 					</div>
 
 					<div class="cms-data">
@@ -178,96 +70,7 @@
 								<th class="data-table__head-item data-table__head-item_align">ИТОГ</th>
 								<th class="data-table__head-item data-table__head-item_align"></th>
 							</tr>
-							<!-- <tr class="data-table__items">
-								<td class="data-table__item" id="id">246016548</td>
-								<td class="data-table__item">Навигационная система Soundmax</td>
-								<td class="data-table__item">Техника для дома</td>
-								<td class="data-table__item data-table__item_color">шт</td>
-								<td class="data-table__item data-table__item_align">5</td>
-								<td class="data-table__item data-table__item_align">$100</td>
-								<td class="data-table__item data-table__item_align">$<span
-										class="data-table__item-sum">500</span></td>
-								<td class="form-buttons data-table__item data-table__item_icons">
-									<button class="form-buttons__button form-buttons__button_carbon"></button>
-									<button class="form-buttons__button form-buttons__button_edit"></button>
-									<button class="form-buttons__button form-buttons__button_basket"></button>
-								</td>
-							</tr>
-							<tr class="data-table__items">
-								<td class="data-table__item" id="id">937295527</td>
-								<td class="data-table__item">Настольная игра “На 4-х ногах”</td>
-								<td class="data-table__item">Настольные игры</td>
-								<td class="data-table__item data-table__item_color">шт</td>
-								<td class="data-table__item data-table__item_align">12</td>
-								<td class="data-table__item data-table__item_align">$14</td>
-								<td class="data-table__item data-table__item_align">$<span
-										class="data-table__item-sum">168</span></td>
-								<td class="form-buttons data-table__item data-table__item_icons">
-									<button class="form-buttons__button form-buttons__button_carbon"></button>
-									<button class="form-buttons__button form-buttons__button_edit"></button>
-									<button class="form-buttons__button form-buttons__button_basket"></button>
-								</td>
-							</tr>
-							<tr class="data-table__items">
-								<td class="data-table__item" id="id">253842678</td>
-								<td class="data-table__item">Смартфон Xiaomi 11T 8/128GB</td>
-								<td class="data-table__item">Мобильные телефоны</td>
-								<td class="data-table__item data-table__item_color">шт</td>
-								<td class="data-table__item data-table__item_align">2</td>
-								<td class="data-table__item data-table__item_align">$500</td>
-								<td class="data-table__item data-table__item_align">$<span
-										class="data-table__item-sum">1000</span></td>
-								<td class="form-buttons data-table__item data-table__item_icons">
-									<button class="form-buttons__button form-buttons__button_carbon"></button>
-									<button class="form-buttons__button form-buttons__button_edit"></button>
-									<button class="form-buttons__button form-buttons__button_basket"></button>
-								</td>
-							</tr>
-							<tr class="data-table__items">
-								<td class="data-table__item" id="id">296378448</td>
-								<td class="data-table__item">Радиоуправляемый автомобиль Cheetan</td>
-								<td class="data-table__item">Игрушки</td>
-								<td class="data-table__item data-table__item_color">шт</td>
-								<td class="data-table__item data-table__item_align">2</td>
-								<td class="data-table__item data-table__item_align">$22</td>
-								<td class="data-table__item data-table__item_align">$<span
-										class="data-table__item-sum">44</span></td>
-								<td class="form-buttons data-table__item data-table__item_icons">
-									<button class="form-buttons__button form-buttons__button_carbon"></button>
-									<button class="form-buttons__button form-buttons__button_edit"></button>
-									<button class="form-buttons__button form-buttons__button_basket"></button>
-								</td>
-							</tr>
-							<tr class="data-table__items">
-								<td class="data-table__item" id="id">215796548</td>
-								<td class="data-table__item">ТВ приставка MECOOL KI</td>
-								<td class="data-table__item">Игрушки, TV-box</td>
-								<td class="data-table__item data-table__item_color">шт</td>
-								<td class="data-table__item data-table__item_align">5</td>
-								<td class="data-table__item data-table__item_align">$700</td>
-								<td class="data-table__item data-table__item_align">$<span
-										class="data-table__item-sum">3500</span></td>
-								<td class="form-buttons data-table__item data-table__item_icons">
-									<button class="form-buttons__button form-buttons__button_carbon"></button>
-									<button class="form-buttons__button form-buttons__button_edit"></button>
-									<button class="form-buttons__button form-buttons__button_basket"></button>
-								</td>
-							</tr>
-							<tr class="data-table__items">
-								<td class="data-table__item" id="id">246258248</td>
-								<td class="data-table__item">Витая пара PROConnect 01-0043-3-25</td>
-								<td class="data-table__item">Кабели</td>
-								<td class="data-table__item data-table__item_color">шт</td>
-								<td class="data-table__item data-table__item_align">10</td>
-								<td class="data-table__item data-table__item_align">$20</td>
-								<td class="data-table__item data-table__item_align">$<span
-										class="data-table__item-sum">200</span></td>
-								<td class="form-buttons data-table__item data-table__item_icons">
-									<button class="form-buttons__button form-buttons__button_carbon"></button>
-									<button class="form-buttons__button form-buttons__button_edit"></button>
-									<button class="form-buttons__button form-buttons__button_basket"></button>
-								</td>
-							</tr> -->
+							<!-- строки с товарами -->
 							<tr class="data-table__footer-items">
 								<td class="data-table__footer-item"></td>
 								<td class="data-table__footer-item"></td>

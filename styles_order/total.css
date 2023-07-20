@@ -26,6 +26,9 @@
 	border-radius: 6px;
 	border: none;
 	padding: 10px 25px;
+}
+
+.total__button-text {
 	font-style: normal;
 	font-weight: 600;
 	font-size: 16px;
