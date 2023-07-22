@@ -7,7 +7,8 @@
 		"category description"
 		"units count"
 		"discont price"
-		". add-picture";
+		"size-image add-picture"
+		"add-picture__preview add-picture__preview";
 	column-gap: 24px;
 	row-gap: 12px;
 }
@@ -122,22 +123,52 @@
 
 .add-picture {
 	grid-area: add-picture;
+	position: relative;
 }
 
-.add-picture__btn {
-	background-color: #6D5BD0;
-	border-radius: 6px;
-	border: none;
-	padding: 11px 29px 11px 28px;
-}
-
-.add-picture__btn-text {
+.add-picture__label-text {
+	display: inline-block;
+	cursor: pointer;
 	font-style: normal;
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 17px;
 	text-transform: uppercase;
 	color: #FFFFFF;
+	background-color: #6D5BD0;
+	border-radius: 6px;
+	border: none;
+	padding: 11px 29px 11px 28px;
+}
+
+.add-picture__input {
+	position: absolute;
+	z-index: -1;
+	top: 6px;
+	left: 0;
+}
+
+.add-picture__preview {
+	grid-area: add-picture__preview;
+	display: none;
+	border: 1px solid green;
+}
+
+.warning__size-image {
+	grid-area: size-image;
+}
+
+.warning__size-image-text {
+	color: #D80101;
+	text-align: center;
+	font-family: Inter;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	text-align: center;
 }
 
 .title__order-id-good {

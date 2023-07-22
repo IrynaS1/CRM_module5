@@ -12,8 +12,9 @@ import editGoodForm from './modules/editGoodForm.js';
 
 import changeGood from './modules/changeGood.js';
 
-import deleteGoodGood from './modules/deleteGood.js';
 import deleteGood from './modules/deleteGood.js';
+
+import addImage from './modules/addImage.js';
 
 {
 	const init = () => {
@@ -37,6 +38,14 @@ import deleteGood from './modules/deleteGood.js';
 			closeBtn.addEventListener('click', () => {
 				const overlay = document.querySelector('.overlay');
 				overlay.style.display = 'none';
+			});
+
+			const addImageInput = document.querySelector('.add-picture__input');
+
+			addImageInput.addEventListener('change', (e) => {
+				e.preventDefault();
+
+				addImage(addImageInput.files[0]);
 			});
 		});
 
@@ -77,7 +86,14 @@ import deleteGood from './modules/deleteGood.js';
 					const form = document.querySelector('.form');
 
 					changeGood(goodId, form);
+				});
 
+				const addImageInput = document.querySelector('.add-picture__input');
+
+				addImageInput.addEventListener('change', (e) => {
+					e.preventDefault();
+
+					addImage(addImageInput.files[0]);
 				});
 			}
 		});
@@ -87,9 +103,3 @@ import deleteGood from './modules/deleteGood.js';
 
 	init();
 }
-
-//удаление товара по id
-/*  fetch('https://viridian-beryl-gooseberry.glitch.me/api/goods/3144111366', {
-	method: 'DELETE'
-}); 
- */

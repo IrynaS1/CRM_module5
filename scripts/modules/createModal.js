@@ -71,10 +71,13 @@ const createModal = () => {
 					</p>
 					<input type="number" name="price" id="price" class="form__input-line" required>
 				</div>
+				<div class="warning__size-image"></div>
 				<div class="form__element add-picture">
-					<button class="add-picture__btn">
-						<span class="add-picture__btn-text">Добавить изображение</span>
-					</button>
+						<label class="add-picture__label-text" for="image">Добавить изображение</label>
+						<input class="add-picture__input" type="file" name="image" id="image" accept="image/*">			
+				</div>
+				<div class="add-picture__preview">
+						<img class="add-picture__img">
 				</div>
 			</form>
 		</div>
